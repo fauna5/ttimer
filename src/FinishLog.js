@@ -32,7 +32,7 @@ function FinishLog({ riders }) {
           }}
         >
           <div>
-            {number} - {format(time - 60*60*1000, 'HH:mm:ss')} - {last}, {first}
+            {number} - {format(time, 'HH:mm:ss')} - {last}, {first}
           </div>
         </div>
       ))}
