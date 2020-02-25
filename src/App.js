@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import RidersFinishing from './RidersFinishing';
+import FinishLog from './FinishLog';
+import riders from './riders.json';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      riders: riders.map(rider => ({ ...rider, startTime: Date.now() })),
+    };
+  }
+
+  timeRider(riderNumber) {
+    console.log('timing', riderNumber);
+    this.setState({
+      riders: this.state.riders.map(rider => {
+        if (rider.number !== riderNumber) {
+          return rider;
+        }
+        const time = Date.now() - rider.startTime;
+        return { ...rider, time };
+      }),
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <RidersFinishing
+          riders={this.state.riders}
+          timeRider={(number) => this.timeRider(number)}
+        />
+        <FinishLog style={{height: '30vh'}} riders={this.state.riders} />
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -1,0 +1,20 @@
+[
+  {
+    "number": 1,
+    "first": "bob",
+    "last": "mikerson",
+    "club": "new malden velo"
+  },
+  {
+    "number": 2,
+    "first": "mike",
+    "last": "bobski",
+    "club": "london dynamo"
+  },
+  {
+    "number": 3,
+    "first": "steve",
+    "last": "steffansson",
+    "club": "kingston wheelers"
+  }
+]
